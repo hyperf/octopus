@@ -11,16 +11,12 @@ declare(strict_types=1);
  */
 namespace App\Controller;
 
-use Hyperf\Octopus\Client;
-use Hyperf\Octopus\Event\Event;
-
 class IndexController extends Controller
 {
     public function index()
     {
         $user = $this->request->input('user', 'Hyperf');
         $method = $this->request->getMethod();
-        di()->get(Client::class)->push(new Event('xxx', ['id' => uniqid()], [1]));
         return $this->response->success([
             'user' => $user,
             'method' => $method,
